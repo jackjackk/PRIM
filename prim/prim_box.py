@@ -461,7 +461,7 @@ class PrimBox(object):
 
         return fig
     
-    def show_tradeoff(self):
+    def show_tradeoff(self, custom_css=False):
         """Plot the tradeoff between coverage and density.
         
         Generates a plot of the tradeoff between coverage and density for the
@@ -527,26 +527,29 @@ class PrimBox(object):
         
         # enable tooltips on IPython Notebook
         if mpld3:
-            css = """
-            table {
-              border-collapse: collapse;
-            }
-            
-            th {
-              background-color:  rgba(255,255,255,0.95);
-            }
-            
-            td {
-              background-color: rgba(255,255,255,0.95);
-            }
-            
-            table, th, td {
-              font-family:Tahoma, Tahoma, sans-serif;
-              font-size: 16px;
-              border: 1px solid black;
-              text-align: right;
-            }
-            """   
+            if custom_css:
+                css = """
+                table {
+                  border-collapse: collapse;
+                }
+                
+                th {
+                  background-color:  rgba(255,255,255,0.95);
+                }
+                
+                td {
+                  background-color: rgba(255,255,255,0.95);
+                }
+                
+                table, th, td {
+                  font-family:Tahoma, Tahoma, sans-serif;
+                  font-size: 16px;
+                  border: 1px solid black;
+                  text-align: right;
+                }
+                """
+            else:
+                css = ""
             
             labels = []
             columns_to_include = ['coverage','density', 'mass', 'res dim']
