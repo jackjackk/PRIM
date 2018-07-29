@@ -527,27 +527,33 @@ class PrimBox(object):
         
         # enable tooltips on IPython Notebook
         if mpld3:
-            if custom_css:
-                css = """
-                table {
-                  border-collapse: collapse;
-                }
-                
-                th {
-                  background-color:  rgba(255,255,255,0.95);
-                }
-                
-                td {
-                  background-color: rgba(255,255,255,0.95);
-                }
-                
-                table, th, td {
-                  font-family:Tahoma, Tahoma, sans-serif;
-                  font-size: 16px;
-                  border: 1px solid black;
-                  text-align: right;
-                }
-                """
+            if custom_css is not None:
+                if isinstance(custom_css, str):
+                    css = custom_css
+                elif isinstance(custom_css, bool):
+                    if custom_css:
+                        css = """
+                        table {
+                          border-collapse: collapse;
+                        }
+                        
+                        th {
+                          background-color:  rgba(255,255,255,0.95);
+                        }
+                        
+                        td {
+                          background-color: rgba(255,255,255,0.95);
+                        }
+                        
+                        table, th, td {
+                          font-family:Tahoma, Tahoma, sans-serif;
+                          font-size: 16px;
+                          border: 1px solid black;
+                          text-align: right;
+                        }
+                        """
+                    else:
+                        css = ""
             else:
                 css = ""
             
