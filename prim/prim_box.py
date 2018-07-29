@@ -541,9 +541,6 @@ class PrimBox(object):
                     }
                     
                     .mpld3-tooltip table, th, td {
-                      font-family:Tahoma, Tahoma, sans-serif;
-                      font-size: 16px;
-                      border: 1px solid black;
                       text-align: right;
                     }
             """
