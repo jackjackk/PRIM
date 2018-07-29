@@ -461,7 +461,7 @@ class PrimBox(object):
 
         return fig
     
-    def show_tradeoff(self, custom_css=False):
+    def show_tradeoff(self):
         """Plot the tradeoff between coverage and density.
         
         Generates a plot of the tradeoff between coverage and density for the
@@ -527,36 +527,26 @@ class PrimBox(object):
         
         # enable tooltips on IPython Notebook
         if mpld3:
-            if custom_css is not None:
-                if isinstance(custom_css, str):
-                    css = custom_css
-                elif isinstance(custom_css, bool):
-                    if custom_css:
-                        css = """
-                        table {
-                          border-collapse: collapse;
-                        }
-                        
-                        th {
-                          background-color:  rgba(255,255,255,0.95);
-                        }
-                        
-                        td {
-                          background-color: rgba(255,255,255,0.95);
-                        }
-                        
-                        table, th, td {
-                          font-family:Tahoma, Tahoma, sans-serif;
-                          font-size: 16px;
-                          border: 1px solid black;
-                          text-align: right;
-                        }
-                        """
-                    else:
-                        css = ""
-            else:
-                css = ""
-            
+            css = """
+                    .mpld3-tooltip table {
+                      border-collapse: collapse;
+                    }
+                    
+                    .mpld3-tooltip th {
+                      background-color:  rgba(255,255,255,0.95);
+                    }
+                    
+                    .mpld3-tooltip td {
+                      background-color: rgba(255,255,255,0.95);
+                    }
+                    
+                    .mpld3-tooltip table, th, td {
+                      font-family:Tahoma, Tahoma, sans-serif;
+                      font-size: 16px;
+                      border: 1px solid black;
+                      text-align: right;
+                    }
+            """
             labels = []
             columns_to_include = ['coverage','density', 'mass', 'res dim']
             frmt = lambda x: '{:.2f}'.format( x )
